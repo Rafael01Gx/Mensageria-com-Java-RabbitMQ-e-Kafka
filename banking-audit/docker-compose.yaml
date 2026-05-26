@@ -1,0 +1,16 @@
+services:
+  postgres-audit:
+    image: postgres:18
+    container_name: postgres-audit-container
+    environment:
+      - POSTGRES_USER=rafael
+      - POSTGRES_PASSWORD=rafael
+      - POSTGRES_DB=audit
+    ports:
+      - 5434:5432
+    volumes:
+      - ./init.sql:/docker-entrypoint-initdb.d/init.sql
+
+volumes:
+  postgres_data:
+    driver: local
